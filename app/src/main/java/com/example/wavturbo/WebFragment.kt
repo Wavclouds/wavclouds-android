@@ -8,5 +8,14 @@ import dev.hotwire.turbo.nav.TurboNavGraphDestination
 open class WebFragment : TurboWebFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupMenu()
+    }
+
+    private fun setupMenu() {
+        toolbarForNavigation()?.inflateMenu(R.menu.menu)
+    }
+
+    override fun shouldObserveTitleChanges(): Boolean {
+        return false
     }
 }
