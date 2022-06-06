@@ -3,15 +3,14 @@ package com.example.wavturbo
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import dev.hotwire.turbo.session.TurboSessionNavHostFragment
 import dev.hotwire.turbo.config.TurboPathConfiguration
+import dev.hotwire.turbo.session.TurboSessionNavHostFragment
 import kotlin.reflect.KClass
-import  com.example.wavturbo.WebFragment
 
 class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     override val sessionName = "main"
 
-    override val startLocation = "http://10.0.2.2:3000"
+    override val startLocation = BASE_URL
 
     override val registeredActivities: List<KClass<out AppCompatActivity>>
         get() = listOf(
@@ -32,6 +31,7 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     override fun onSessionCreated() {
         super.onSessionCreated()
         session.webView.settings.userAgentString = customUserAgent(session.webView)
+        session.webView.getSettings().setJavaScriptEnabled(true)
     }
 
     private fun customUserAgent(webView: WebView): String {
