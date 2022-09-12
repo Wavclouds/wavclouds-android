@@ -1,6 +1,6 @@
 package com.example.wavturbo
 
-import android.webkit.WebView
+import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import dev.hotwire.turbo.config.TurboPathConfiguration
