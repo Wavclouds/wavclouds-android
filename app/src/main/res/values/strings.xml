@@ -5,4 +5,6 @@
     <string name="notifications">Notifications</string>
     <string name="profile">Profile</string>
     <string name="preference_oauth_token">Oauth Token</string>
+    <string name="preference_file_key">File Key </string>
+    <string name="header_oauth_token">Oauth Token</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.wavturbo
 
+import android.content.Context
+import android.util.Log
 import android.webkit.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -9,7 +11,6 @@ import kotlin.reflect.KClass
 
 class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     override val sessionName = "main"
-
     override val startLocation = BASE_URL
 
     override val registeredActivities: List<KClass<out AppCompatActivity>>
@@ -31,10 +32,13 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
     override fun onSessionCreated() {
         super.onSessionCreated()
         session.webView.settings.userAgentString = customUserAgent(session.webView)
-        session.webView.getSettings().setJavaScriptEnabled(true)
+        session.webView.settings.setJavaScriptEnabled(true)
+        session.webView.settings.setMediaPlaybackRequiresUserGesture(false)
+
     }
 
     private fun customUserAgent(webView: WebView): String {
         return "Turbo Native Android ${webView.settings.userAgentString}"
     }
+
 }

@@ -4,8 +4,7 @@ import com.github.kittinunf.fuel.core.ResponseDeserializable
 import com.google.gson.Gson
 
 //User Model
-data class User(val access_token: String = "",
-                val refresh_token: String = "") {
+data class User(val user_id: String = "") {
 
     //User Deserializer
     class Deserializer : ResponseDeserializable<User> {

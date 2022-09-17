@@ -7,8 +7,7 @@ import com.github.kittinunf.fuel.core.extensions.jsonBody
 
 class AuthService(val login: String, val password: String) {
     var success: Boolean = false
-    var access_token: String? = ""
-    var refresh_token: String? = ""
+    var oauth_token: String? = ""
 
     fun call() {
 
