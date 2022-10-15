@@ -5,13 +5,13 @@
         android:icon="@drawable/ic_home"
         android:title="@string/home" />
     <item
+        android:id="@+id/upload"
+        android:icon="@android:drawable/stat_sys_upload"
+        android:title="@string/upload" />
+    <item
         android:id="@+id/chats"
         android:icon="@drawable/ic_chats"
         android:title="@string/chats" />
-    <item
-        android:id="@+id/notifications"
-        android:icon="@drawable/ic_notifications"
-        android:title="@string/notifications" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"

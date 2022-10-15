@@ -23,21 +23,4 @@ open class WebFragment : TurboWebFragment() {
     override fun shouldObserveTitleChanges(): Boolean {
         return false
     }
-
-    override fun shouldNavigateTo(newLocation: String): Boolean {
-        return when (newLocation.contains("sign_in")  || newLocation.contains("sign_up") || newLocation.contains("?oauth_token=")) {
-            true -> {
-                true
-            }
-            else -> {
-                val uri = Uri.parse(newLocation).buildUpon()
-                val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-                val authToken = sharedPref?.getString(getString(R.string.preference_oauth_token), null)
-                uri.appendQueryParameter("oauth_token", authToken)
-                val locationWithToken = uri.toString()
-                this.navigate(locationWithToken)
-                false
-            }
-        }
-    }
 }

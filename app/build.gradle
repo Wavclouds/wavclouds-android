@@ -9,7 +9,7 @@ android {
         applicationId "com.example.wavturbo"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 1
+        versionCode 4
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
     }

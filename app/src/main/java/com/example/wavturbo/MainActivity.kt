@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.webkit.CookieManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -22,11 +23,10 @@ class MainActivity : AppCompatActivity(), TurboActivity {
         super.onCreate(savedInstanceState)
         val sharedPref = getPreferences(Context.MODE_PRIVATE)
         val authToken = sharedPref.getString(getString(R.string.preference_oauth_token), null)
-        if (authToken != null) {
-            var urlWithToken = BASE_URL + "?oauth_token=${authToken}"
+        if (authToken != null && authToken != "") {
             setContentView(R.layout.main_activity)
             delegate = TurboActivityDelegate(this, R.id.main_nav_host)
-            delegate.navigate(urlWithToken)
+            CookieManager.getInstance().setCookie(BASE_URL, "oauth_token=${authToken}");
             var userId: String = ""
             Fuel.post(USER_ID_URL, listOf("oauth_token" to authToken)).responseObject(User.Deserializer()) { req, res, result ->
                 //result is of type Result<User, Exception>
@@ -37,23 +37,24 @@ class MainActivity : AppCompatActivity(), TurboActivity {
             }
             var menuBar = findViewById(R.id.bottom_navigation) as BottomNavigationView
             val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+                Log.d("NAV", userId)
                 when (item.itemId) {
                     R.id.home -> {
                         // put your code here
-                        delegate.navigate(BASE_URL + "?oauth_token=${authToken}")
+                        delegate.navigate(BASE_URL)
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.chats -> {
                         // put your code here
-                        delegate.navigate(BASE_URL + "/${userId}/chats?oauth_token=${authToken}")
+                        delegate.navigate(BASE_URL + "/${userId}/chats")
                         return@OnNavigationItemSelectedListener true
                     }
-                    R.id.notifications -> {
-                        delegate.navigate(BASE_URL + "/notifications?oauth_token=${authToken}")
+                    R.id.upload -> {
+                        delegate.navigate(BASE_URL + "/audios/new")
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.profile -> {
-                        delegate.navigate(BASE_URL + "/${userId}?oauth_token=${authToken}")
+                        delegate.navigate(BASE_URL + "/${userId}")
                         return@OnNavigationItemSelectedListener true
                     }
                 }

@@ -34,7 +34,6 @@ class MainSessionNavHostFragment : TurboSessionNavHostFragment() {
         session.webView.settings.userAgentString = customUserAgent(session.webView)
         session.webView.settings.setJavaScriptEnabled(true)
         session.webView.settings.setMediaPlaybackRequiresUserGesture(false)
-
     }
 
     private fun customUserAgent(webView: WebView): String {
