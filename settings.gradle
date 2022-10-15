@@ -6,5 +6,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "WavTurbo"
+rootProject.name = "Wavclouds"
 include ':app'

@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion '30.0.3'
 
     defaultConfig {
-        applicationId "com.example.wavturbo"
+        applicationId "com.wavclouds.mist"
         minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 4
+        targetSdkVersion 33
+        versionCode 8
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
     }
@@ -21,7 +21,7 @@ android {
         }
 
         debug {
-            debuggable true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
